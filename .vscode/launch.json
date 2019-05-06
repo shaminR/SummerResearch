@@ -1,0 +1,18 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - ChartView",
+            "request": "launch",
+            "mainClass": "View.ChartView",
+            "projectName": "i2cConnection"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - XChart",
+            "request": "launch",
+            "mainClass": "charts.XChart",
+            "projectName": "i2cConnection"
+        }
+    ]
+}
