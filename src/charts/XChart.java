@@ -28,7 +28,7 @@ public class XChart {
 
 	public XYChart makeLineGraph() throws Exception {
 		System.setProperty("xchart.nosys", "true");
-		chart = new XYChartBuilder().width(800).height(600).theme(ChartTheme.Matlab).title("voltage over time").xAxisTitle("time (s)").yAxisTitle("Voltage (V)").build();
+		chart = new XYChartBuilder().width(800).height(600).theme(ChartTheme.Matlab).xAxisTitle("time (s)").yAxisTitle("Voltage (V)").build();
 
 		xData = new ArrayList<Double>(20);
 		yData = new ArrayList<Double>(20);
@@ -38,7 +38,7 @@ public class XChart {
 			yData.add(randomGenerator());
 		}
 		XYSeries series = chart.addSeries("sensor voltages", xData, yData);	
-		series.setMarker(SeriesMarkers.NONE);
+		// series.setMarker(SeriesMarkers.NONE);
 		series.setLineColor(Color.RED);
 
 		style();
