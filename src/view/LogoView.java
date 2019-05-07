@@ -1,4 +1,4 @@
-package view;
+package View;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -59,18 +59,13 @@ public class LogoView extends JFrame{
         this.pack();
         this.setVisible(true);
 
-        try {
-            for(int i = 0; i <= 100; i+=10){
-                bar.setValue(i+10);
-                Thread.sleep(100);
-            }
-        } catch (Exception e) {}
+        fill();
     }
 
     private void fill(){
-        try {
-            for(int i = 0; i < 10; i+=20){
-                bar.setValue(i+1);
+    	try {
+            for(int i = 0; i <= 100; i+=10){
+                bar.setValue(i+10);
                 Thread.sleep(100);
             }
         } catch (Exception e) {}
