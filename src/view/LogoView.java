@@ -26,7 +26,7 @@ import org.knowm.xchart.XYChart;
  */
 public class LogoView extends JFrame{
 
-    ImageIcon image = new ImageIcon("logo.jpg");
+    ImageIcon image = new ImageIcon("img/logo.jpg");
     JLabel label = new JLabel(image);
     JPanel panel = new JPanel();    
     JPanel emptyPanel = new JPanel();

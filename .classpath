@@ -6,6 +6,7 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="i2cConnection/libs"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="src" path="img"/>
 	<classpathentry kind="lib" path="libs/jna-5.3.1.jar"/>
 	<classpathentry kind="lib" path="libs/xchart-3.5.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
