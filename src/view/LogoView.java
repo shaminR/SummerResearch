@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -36,7 +36,7 @@ public class LogoView extends JFrame{
         this.setUndecorated(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.WHITE);
-        // this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         GraphicsDevice device = this.getGraphicsConfiguration().getDevice();
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
         
