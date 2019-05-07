@@ -25,6 +25,7 @@ public class XChart {
 	double[][] graphData;
 	XYChart chart;
 	SwingWrapper<XYChart> sw;
+	static double x = 0;
 
 	public XYChart makeLineGraph() throws Exception {
 		System.setProperty("xchart.nosys", "true");
@@ -48,9 +49,10 @@ public class XChart {
 
 	private void style(){
 		chart.getStyler().setLegendPosition(LegendPosition.InsideNE);		
-		chart.getStyler().setYAxisMin(0.0);
-		chart.getStyler().setYAxisMax(100.0);		
+		chart.getStyler().setYAxisMin(-1.0);
+		chart.getStyler().setYAxisMax(1.0);		
 		chart.getStyler().setXAxisMin(xData.get(0)+1.0);
+		chart.getStyler().setXAxisMax(xData.get(xData.size()-1)+6.0);
 	}
 
 	public void runChart(JPanel panel)throws Exception{
@@ -65,18 +67,23 @@ public class XChart {
 
 	private void update(){
 		double lastx = xData.get(xData.size()-1);
+		chart.getStyler().setXAxisMin(xData.get(0)+5.0);
 		xData.remove(0);
 		xData.add(lastx + 1.0);
+		
+		chart.getStyler().setXAxisMax(xData.get(xData.size()-1)+6.0);
 
 		yData.remove(0);
 		yData.add(randomGenerator());
-		chart.getStyler().setXAxisMin(xData.get(0)+1.0);
 	}
 
 	public double randomGenerator() {
-		int[] choices = {20, 30, 40, 50, 60};
-		int index = new Random().nextInt(choices.length);
-		return (double)choices[index];
+		x+=15;
+		return Math.cos(Math.toRadians(x));
+
+		// int[] choices = {20, 30, 40, 50, 60};
+		// int index = new Random().nextInt(choices.length);
+		// return (double)choices[index];
 	}
 	public static void main(String[] args) throws Exception {
 		System.setProperty("xchart.nosys", "true");

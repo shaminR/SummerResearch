@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Controller",
+            "request": "launch",
+            "mainClass": "controller.Controller",
+            "projectName": "i2cConnection"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - LogoView",
+            "request": "launch",
+            "mainClass": "View.LogoView",
+            "projectName": "i2cConnection"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - ChartView",
             "request": "launch",
             "mainClass": "View.ChartView",

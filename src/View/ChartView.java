@@ -1,4 +1,4 @@
-package View;
+package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -58,11 +58,12 @@ public class ChartView extends JFrame{
         //to fullscreen on linux
         GraphicsDevice device = this.getGraphicsConfiguration().getDevice();
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-
+        
         press = new JButton("press for fun");
-
+        
         chartPanel = new XChartPanel<XYChart>(chart);
         chartPanel.setBorder(new EmptyBorder(10, 15, 10, 15));
+        chartPanel.setDoubleBuffered(true);
 
         title.setFont(new Font("Sans", Font.PLAIN, 20));
         title.setHorizontalAlignment(JLabel.CENTER);
