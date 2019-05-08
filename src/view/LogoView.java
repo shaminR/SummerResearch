@@ -3,8 +3,11 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GraphicsDevice;
+import java.awt.image.BufferedImage;
+import java.net.URL;
 import java.util.Random;
 
+import javax.imageio.ImageIO;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -25,14 +28,23 @@ import org.knowm.xchart.XYChart;
  * LogoView
  */
 public class LogoView extends JFrame{
-
-    ImageIcon image = new ImageIcon("img/logo.jpg");
-    JLabel label = new JLabel(image);
+	
+	/*URL url = LogoView.class.getResource("img/logo.jpg");
+	// BufferedImage pic = ImageIO.read(url);
+    ImageIcon image = new ImageIcon(url);
+    JLabel label = new JLabel(image);*/
     JPanel panel = new JPanel();    
     JPanel emptyPanel = new JPanel();
     JProgressBar bar = new JProgressBar();
 
-    public LogoView(){
+    public LogoView() throws Exception{
+    	
+    	
+    	URL url = LogoView.class.getResource("/logo.jpg");
+    	BufferedImage pic = ImageIO.read(url);
+        ImageIcon image = new ImageIcon(pic);
+        JLabel label = new JLabel(image);
+    	
         this.setUndecorated(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBackground(Color.WHITE);
@@ -70,7 +82,7 @@ public class LogoView extends JFrame{
             }
         } catch (Exception e) {}
     }
-    public static void main(String[] args) {
+    public static void main(String[] args)throws Exception {
         new LogoView();   
     }
 }
