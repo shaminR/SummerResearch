@@ -5,7 +5,7 @@ import view.LogoView;
 
 // import views.*;
 
-public class Controller {
+public class Runner {
 
 	public static void main(String[] args) throws Exception{
 		new LogoView();

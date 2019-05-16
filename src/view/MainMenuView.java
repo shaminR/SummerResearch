@@ -79,8 +79,8 @@ public class MainMenuView extends JFrame {
 		newProcessButton.setBackground(Color.WHITE);
 		newProcessButton.setFont(new Font("Sans", Font.PLAIN, 20));
 		
+		settingsButton.setPreferredSize(new Dimension(200, 150));
 		settingsButton.setMinimumSize(new Dimension(200, 150));
-		settingsButton.setMaximumSize(new Dimension(200, 150));
 		settingsButton.setBackground(Color.WHITE);
 		settingsButton.setFont(new Font("Sans", Font.PLAIN, 20));
 		
@@ -88,7 +88,7 @@ public class MainMenuView extends JFrame {
 		troubleshootButton.setBackground(Color.WHITE);
 		troubleshootButton.setFont(new Font("Sans", Font.PLAIN, 20));
 		
-		helpButton.setMaximumSize(new Dimension(200, 150));
+		helpButton.setPreferredSize(new Dimension(200, 150));
 		helpButton.setBackground(Color.WHITE);
 		helpButton.setFont(new Font("Sans", Font.PLAIN, 20));
 	}
