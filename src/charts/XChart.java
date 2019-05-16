@@ -31,10 +31,10 @@ public class XChart {
 		System.setProperty("xchart.nosys", "true");
 		chart = new XYChartBuilder().width(800).height(600).theme(ChartTheme.Matlab).xAxisTitle("time (s)").yAxisTitle("Voltage (V)").build();
 
-		xData = new ArrayList<Double>(20);
-		yData = new ArrayList<Double>(20);
+		xData = new ArrayList<Double>(10);
+		yData = new ArrayList<Double>(10);
 		
-		for(int i = 0; i < 20; i++){
+		for(int i = 0; i < 10; i++){
 			xData.add((double)i);
 			yData.add(randomGenerator());
 		}
@@ -57,7 +57,7 @@ public class XChart {
 
 	public void runChart(JPanel panel)throws Exception{
 		while(true){
-			Thread.sleep(200);
+			Thread.sleep(300);
 			update();
 			chart.updateXYSeries("sensor voltages", xData, yData, null);//, arg3)
 			panel.revalidate();

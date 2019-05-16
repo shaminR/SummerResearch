@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GraphicsDevice;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.Random;
@@ -29,10 +30,10 @@ import org.knowm.xchart.XYChart;
  */
 public class LogoView extends JFrame{
 	
-	/*URL url = LogoView.class.getResource("img/logo.jpg");
-	// BufferedImage pic = ImageIO.read(url);
-    ImageIcon image = new ImageIcon(url);
-    JLabel label = new JLabel(image);*/
+	// URL url = LogoView.class.getResource("img/logo.jpg");
+	// // BufferedImage pic = ImageIO.read(url);
+    // ImageIcon image = new ImageIcon(url);
+    // JLabel label = new JLabel(image);
     JPanel panel = new JPanel();    
     JPanel emptyPanel = new JPanel();
     JProgressBar bar = new JProgressBar();
@@ -43,6 +44,9 @@ public class LogoView extends JFrame{
     	URL url = LogoView.class.getResource("/logo.jpg");
     	BufferedImage pic = ImageIO.read(url);
         ImageIcon image = new ImageIcon(pic);
+        Image picture = image.getImage();
+        Image scaledImg = picture.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+        image = new ImageIcon(scaledImg);
         JLabel label = new JLabel(image);
     	
         this.setUndecorated(true);
