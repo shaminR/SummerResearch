@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - NewProcessView",
+            "request": "launch",
+            "mainClass": "view.NewProcessView",
+            "projectName": "i2cConnection"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - MainMenu",
             "request": "launch",
             "mainClass": "view.MainMenu",
