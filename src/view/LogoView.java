@@ -30,22 +30,17 @@ import org.knowm.xchart.XYChart;
  */
 public class LogoView extends JFrame{
 	
-	// URL url = LogoView.class.getResource("img/logo.jpg");
-	// // BufferedImage pic = ImageIO.read(url);
-    // ImageIcon image = new ImageIcon(url);
-    // JLabel label = new JLabel(image);
     JPanel panel = new JPanel();    
     JPanel emptyPanel = new JPanel();
     JProgressBar bar = new JProgressBar();
 
     public LogoView() throws Exception{
     	
-    	
     	URL url = LogoView.class.getResource("/logo.jpg");
     	BufferedImage pic = ImageIO.read(url);
         ImageIcon image = new ImageIcon(pic);
         Image picture = image.getImage();
-        Image scaledImg = picture.getScaledInstance(250, 200, Image.SCALE_SMOOTH);
+        Image scaledImg = picture.getScaledInstance(250, 150, Image.SCALE_SMOOTH);
         image = new ImageIcon(scaledImg);
         JLabel label = new JLabel(image);
     	
@@ -65,21 +60,24 @@ public class LogoView extends JFrame{
         bar.setForeground(Color.GREEN);
         bar.setBorder(new LineBorder(Color.WHITE, 3));
 
-        // bar.setSize(100, 10);
-
         panel.setBackground(Color.WHITE);
         this.add(emptyPanel);
         this.add( panel);
         this.add(bar);
         
+    }
+    
+    public void runLogo() throws Exception{
         this.pack();
         this.setVisible(true);
-
         fill();
+        Thread.sleep(1000);
+        //this.setVisible(false);
     }
-
+    
     private void fill(){
     	try {
+            Thread.sleep(1500);
             for(int i = 0; i <= 100; i+=10){
                 bar.setValue(i+10);
                 Thread.sleep(100);

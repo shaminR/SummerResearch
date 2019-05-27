@@ -3,6 +3,7 @@ package view;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Image;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -28,35 +29,23 @@ import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.EtchedBorder;
 
+import controller.*;
+
 public class MainMenu extends JFrame {
 
 	private JPanel contentPane;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainMenu frame = new MainMenu();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 */
+	public JButton newProcessButton;
+	public JButton settingsButton;
+	public JButton troubleshootButton;
+	public JButton helpButton;
+	
 	public MainMenu() throws IOException {
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 480);
 		this.setUndecorated(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//this.setResizable(false);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); // TODO uncomment
+		//setSize(800, 480);
+		
 		this.setBackground(Color.WHITE);
 		
 		contentPane = new JPanel();
@@ -75,7 +64,7 @@ public class MainMenu extends JFrame {
 		BufferedImage pic = ImageIO.read(url);
 		ImageIcon image = new ImageIcon(pic);
 		Image picture = image.getImage();	
-		Image scaledImg = picture.getScaledInstance(93, 80, Image.SCALE_SMOOTH);
+		Image scaledImg = picture.getScaledInstance(105, 75, Image.SCALE_SMOOTH);
         image = new ImageIcon(scaledImg);
 		JLabel iconLabel = new JLabel(image);
 		iconLabel.setBackground(Color.WHITE);
@@ -88,7 +77,7 @@ public class MainMenu extends JFrame {
 		Component horizontalGlue_1 = Box.createHorizontalGlue();
 		buttonPanel.add(horizontalGlue_1);
 		
-		JButton newProcessButton = new JButton("New Process");
+		newProcessButton = new JButton("New Process");
 		newProcessButton.setMinimumSize(new Dimension(150, 100));
 		newProcessButton.setMaximumSize(new Dimension(150, 100));
 		newProcessButton.setForeground(Color.DARK_GRAY);
@@ -99,7 +88,7 @@ public class MainMenu extends JFrame {
 		Component horizontalStrut = Box.createHorizontalStrut(10);
 		buttonPanel.add(horizontalStrut);
 		
-		JButton settingsButton = new JButton("Settings");
+		settingsButton = new JButton("Settings");
 		settingsButton.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		settingsButton.setMinimumSize(new Dimension(150, 100));
 		settingsButton.setMaximumSize(new Dimension(150, 100));
@@ -111,7 +100,7 @@ public class MainMenu extends JFrame {
 		Component horizontalStrut_1 = Box.createHorizontalStrut(10);
 		buttonPanel.add(horizontalStrut_1);
 		
-		JButton troubleshootButton = new JButton("Troubleshoot");
+		troubleshootButton = new JButton("Troubleshoot");
 		troubleshootButton.setMinimumSize(new Dimension(150, 100));
 		troubleshootButton.setMaximumSize(new Dimension(150, 100));
 		troubleshootButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
@@ -122,7 +111,7 @@ public class MainMenu extends JFrame {
 		Component horizontalStrut_2 = Box.createHorizontalStrut(10);
 		buttonPanel.add(horizontalStrut_2);
 		
-		JButton helpButton = new JButton("Help");
+		helpButton = new JButton("Help");
 		helpButton.setMinimumSize(new Dimension(150, 100));
 		helpButton.setMaximumSize(new Dimension(150, 100));
 		helpButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
@@ -133,6 +122,26 @@ public class MainMenu extends JFrame {
 		Component horizontalGlue = Box.createHorizontalGlue();
 		buttonPanel.add(horizontalGlue);
 		
+		// this.setVisible(true);
+	}
+	
+	public void addListeners(ActionListener listener) {
+		newProcessButton.addActionListener(listener);
+		troubleshootButton.addActionListener(listener);
+		settingsButton.addActionListener(listener);
+		helpButton.addActionListener(listener);
 	}
 
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainMenu frame = new MainMenu();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 }

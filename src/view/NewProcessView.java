@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.Font;
@@ -34,32 +35,18 @@ import java.awt.Dimension;
 public class NewProcessView extends JFrame {
 
 	private JPanel contentPane;
+	public JButton backButton;
+	public JButton bladderButton;
+	public JButton lungButton;
+	public JButton startButton;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					NewProcessView frame = new NewProcessView();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the frame.
-	 * @throws IOException 
-	 */
 	public NewProcessView() throws IOException {
-		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 480);
+		//setResizable(false);
 		this.setUndecorated(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setExtendedState(JFrame.MAXIMIZED_BOTH); // TODO uncomment
+		//setSize(800, 480);
+		
 		this.setBackground(Color.WHITE);
 		
 		contentPane = new JPanel();
@@ -69,27 +56,57 @@ public class NewProcessView extends JFrame {
 		
 		JPanel iconPanel = new JPanel();
 		iconPanel.setBorder(null);
-		FlowLayout fl_iconPanel = (FlowLayout) iconPanel.getLayout();
-		fl_iconPanel.setAlignment(FlowLayout.LEFT);
 		iconPanel.setBackground(Color.WHITE);
 		contentPane.add(iconPanel, BorderLayout.NORTH);
 		
-		URL url = LogoView.class.getResource("/logo.jpg");
+		URL url = NewProcessView.class.getResource("/logo.jpg");
 		BufferedImage pic = ImageIO.read(url);
 		ImageIcon image = new ImageIcon(pic);
 		Image picture = image.getImage();	
-		Image scaledImg = picture.getScaledInstance(93, 80, Image.SCALE_SMOOTH);
+		Image scaledImg = picture.getScaledInstance(105, 75, Image.SCALE_SMOOTH);
         image = new ImageIcon(scaledImg);
+		GridBagLayout gbl_iconPanel = new GridBagLayout();
+		gbl_iconPanel.columnWidths = new int[] {21, 51, 50, 151, 50, 0};
+		gbl_iconPanel.rowHeights = new int[]{80, 0};
+		gbl_iconPanel.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_iconPanel.rowWeights = new double[]{0.0, Double.MIN_VALUE};
+		iconPanel.setLayout(gbl_iconPanel);
+		
+		URL url2 = NewProcessView.class.getResource("/backArrow.jpg");
+		BufferedImage pic2 = ImageIO.read(url2);
+		ImageIcon image2 = new ImageIcon(pic2);
+		Image picture2 = image2.getImage();	
+		Image scaledImg2 = picture2.getScaledInstance(30, 35, Image.SCALE_SMOOTH);
+        image2 = new ImageIcon(scaledImg2);
+		backButton = new JButton(image2);
+		backButton.setBackground(Color.WHITE);
+		backButton.setBorderPainted(false);
+		backButton.setFont(new Font("Tahoma", Font.BOLD, 22));
+		backButton.setPreferredSize(new Dimension(30, 35));
+		backButton.setMinimumSize(new Dimension(50, 50));
+		backButton.setMaximumSize(new Dimension(50, 50));
+		GridBagConstraints gbc_backButton = new GridBagConstraints();
+		gbc_backButton.anchor = GridBagConstraints.WEST;
+		gbc_backButton.insets = new Insets(0, 0, 0, 5);
+		gbc_backButton.gridx = 1;
+		gbc_backButton.gridy = 0;
+		iconPanel.add(backButton, gbc_backButton);
 		JLabel iconLabel = new JLabel(image);
 		iconLabel.setBackground(Color.WHITE);
-		iconPanel.add(iconLabel);
-		
-		Component horizontalStrut = Box.createHorizontalStrut(220);
-		iconPanel.add(horizontalStrut);
+		GridBagConstraints gbc_iconLabel = new GridBagConstraints();
+		gbc_iconLabel.anchor = GridBagConstraints.NORTHWEST;
+		gbc_iconLabel.insets = new Insets(0, 0, 0, 5);
+		gbc_iconLabel.gridx = 2;
+		gbc_iconLabel.gridy = 0;
+		iconPanel.add(iconLabel, gbc_iconLabel);
 		
 		JLabel titleLabel = new JLabel("New Process");
 		titleLabel.setFont(new Font("SansSerif", Font.BOLD, 22));
-		iconPanel.add(titleLabel);
+		GridBagConstraints gbc_titleLabel = new GridBagConstraints();
+		gbc_titleLabel.anchor = GridBagConstraints.WEST;
+		gbc_titleLabel.gridx = 4;
+		gbc_titleLabel.gridy = 0;
+		iconPanel.add(titleLabel, gbc_titleLabel);
 		
 		JPanel mainPanel = new JPanel();
 		contentPane.add(mainPanel, BorderLayout.CENTER);
@@ -117,7 +134,7 @@ public class NewProcessView extends JFrame {
 		gbc_verticalStrut_1.gridy = 2;
 		mainPanel.add(verticalStrut_1, gbc_verticalStrut_1);
 		
-		JButton bladderButton = new JButton("Bladder Cancer Detection");
+		bladderButton = new JButton("Bladder Cancer Detection");
 		bladderButton.setPreferredSize(new Dimension(300, 75));
 		bladderButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
 		bladderButton.setForeground(Color.DARK_GRAY);
@@ -136,7 +153,7 @@ public class NewProcessView extends JFrame {
 		gbc_verticalStrut.gridy = 4;
 		mainPanel.add(verticalStrut, gbc_verticalStrut);
 		
-		JButton lungButton = new JButton("Lung Cancer Detection");
+		lungButton = new JButton("Lung Cancer Detection");
 		lungButton.setPreferredSize(new Dimension(300, 75));
 		lungButton.setForeground(Color.DARK_GRAY);
 		lungButton.setFont(new Font("SansSerif", Font.PLAIN, 20));
@@ -148,12 +165,9 @@ public class NewProcessView extends JFrame {
 		gbc_lungButton.gridy = 5;
 		mainPanel.add(lungButton, gbc_lungButton);
 		
-		JButton startButton = new JButton("START");
-		startButton.setPreferredSize(new Dimension(100, 50));
-		startButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		startButton = new JButton("START");
+		startButton.setEnabled(false);
+		startButton.setPreferredSize(new Dimension(150, 50));
 		startButton.setFont(new Font("SansSerif", Font.BOLD, 20));
 		startButton.setBackground(Color.LIGHT_GRAY);
 		GridBagConstraints gbc_startButton = new GridBagConstraints();
@@ -161,5 +175,29 @@ public class NewProcessView extends JFrame {
 		gbc_startButton.gridx = 1;
 		gbc_startButton.gridy = 7;
 		mainPanel.add(startButton, gbc_startButton);
+	}
+
+	public void addListeners(ActionListener listener) {
+		startButton.addActionListener(listener);
+		backButton.addActionListener(listener);
+		lungButton.addActionListener(listener);
+		bladderButton.addActionListener(listener);
+	}
+	
+	public void errorMessage(String error){
+        JOptionPane.showMessageDialog(this, error);
+    }
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					NewProcessView frame = new NewProcessView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
 	}
 }
